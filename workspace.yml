@@ -1,0 +1,17 @@
+version: workspaces/v0.1
+name: sheets-example
+default_environment: dev
+app_properties:
+  WELCOME_DATASET_ALIAS: welcome
+default_data_store: Warehouse
+dataset_paths:
+- analyze/datasets
+- .meltano/analyze/datasets
+channel_paths:
+- analyze/channels
+pipeline_paths:
+- pipelines
+plugin_paths:
+- plugins
+data_store_paths:
+- datastores
