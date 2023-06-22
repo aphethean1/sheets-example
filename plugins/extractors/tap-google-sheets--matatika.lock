@@ -1,0 +1,111 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-google-sheets",
+  "namespace": "tap_google_sheets",
+  "variant": "matatika",
+  "label": "Google Sheets",
+  "docs": "https://www.matatika.com/data-details/tap-google-sheets/",
+  "repo": "https://github.com/Matatika/tap-google-sheets",
+  "pip_url": "git+https://github.com/Matatika/tap-google-sheets@v0.3.0",
+  "description": "Google Sheets is a cloud-based spreadsheet program that allows users to create and edit spreadsheets online, collaborate with others in real-time, and access their work from anywhere with an internet connection.\n\nGoogle Sheets is a powerful tool for organizing and analyzing data, creating charts and graphs, and automating tasks with formulas and scripts. Users can import data from other sources, such as CSV files or other spreadsheets, and export their work in a variety of formats. With real-time collaboration, multiple users can work on the same spreadsheet simultaneously, making it easy to share information and collaborate on projects. Google Sheets also offers a range of templates and add-ons to help users get started and customize their spreadsheets to meet their specific needs. Overall, Google Sheets is a versatile and user-friendly tool for managing data and collaborating with others online.\n### Prerequisites\nTo obtain the OAuth identity provider authorization endpoint used to create and refresh tokens, you need to go to the Google Cloud Console, create a new project, enable the Google Sheets API, and create OAuth 2.0 credentials. The authorization endpoint will be provided in the credentials.\n\nTo obtain the OAuth scopes needed to request access to Google Sheets, you need to specify the appropriate scopes when creating the OAuth 2.0 credentials in the Google Cloud Console. The required scopes depend on the specific actions you want to perform with the Sheets API.\n\nTo obtain the Access Token and OAuth Refresh Token, you need to authenticate the user and obtain their consent to access their Google Sheets data. This can be done using the Google Sheets API client libraries or by implementing the OAuth 2.0 flow manually.\n\nTo obtain the Sheet ID, you need to open the Google Sheet you want to access and copy the ID from the URL in the address bar. The Sheet ID is the long string of characters between \"/d/\" and \"/edit\" in the URL.",
+  "logo_url": "https://localhost:3443/assets/images/datasource/tap-google-sheets.png",
+  "capabilities": [
+    "state",
+    "catalog",
+    "discover"
+  ],
+  "settings": [
+    {
+      "name": "oauth_credentials.authorization_url",
+      "kind": "hidden",
+      "value": "https://oauth2.googleapis.com/token",
+      "label": "OAuth identity provider authorization endpoint used create and refresh tokens",
+      "description": "The endpoint used to authorize and refresh OAuth tokens.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.scope",
+      "kind": "hidden",
+      "value": "https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive.readonly",
+      "label": "OAuth scopes we need to request access to",
+      "description": "The specific permissions we need to request access to in order to connect to Google Sheets.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.access_token",
+      "kind": "hidden",
+      "label": "Access Token",
+      "description": "The token used to authenticate and authorize API requests.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "kind": "hidden",
+      "label": "OAuth Refresh Token",
+      "description": "The token used to refresh the access token when it expires.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url",
+      "kind": "hidden",
+      "label": "Optional - will be called with 'oauth_credentials.refresh_token' to refresh the access token",
+      "description": "An optional function that will be called to refresh the access token using the refresh token.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url_auth",
+      "kind": "hidden",
+      "label": "Optional - Sets Authorization header on 'oauth_credentials.refresh_url' request",
+      "description": "An optional setting that sets the Authorization header on the refresh URL request.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.client_id",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client ID used if refresh_proxy_url not supplied",
+      "description": "An optional setting that specifies the OAuth client ID to use if the refresh proxy URL is not supplied.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.client_secret",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client Secret used if refresh_proxy_url not supplied",
+      "description": "An optional setting that specifies the OAuth client secret to use if the refresh proxy URL is not supplied.",
+      "protected": false
+    },
+    {
+      "name": "sheet_id",
+      "kind": "string",
+      "label": "Sheet ID",
+      "description": "The unique identifier for the Google Sheet we want to connect to.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "stream_name",
+      "kind": "string",
+      "label": "Stream Name (Optional)",
+      "description": "An optional name for the stream we want to create.",
+      "protected": false
+    },
+    {
+      "name": "child_sheet_name",
+      "kind": "string",
+      "label": "Child Sheet Name (Optional)",
+      "description": "An optional name for the child sheet we want to create.",
+      "protected": false
+    },
+    {
+      "name": "key_properties",
+      "kind": "array",
+      "label": "Key Properties (Optional)",
+      "description": "Optional key properties for the child sheet.",
+      "protected": false
+    }
+  ],
+  "full_description": "Google Sheets is a cloud-based spreadsheet program that allows users to create and edit spreadsheets online, collaborate with others in real-time, and access their work from anywhere with an internet connection.\n\nGoogle Sheets is a powerful tool for organizing and analyzing data, creating charts and graphs, and automating tasks with formulas and scripts. Users can import data from other sources, such as CSV files or other spreadsheets, and export their work in a variety of formats. With real-time collaboration, multiple users can work on the same spreadsheet simultaneously, making it easy to share information and collaborate on projects. Google Sheets also offers a range of templates and add-ons to help users get started and customize their spreadsheets to meet their specific needs. Overall, Google Sheets is a versatile and user-friendly tool for managing data and collaborating with others online.\n### Prerequisites\nTo obtain the OAuth identity provider authorization endpoint used to create and refresh tokens, you need to go to the Google Cloud Console, create a new project, enable the Google Sheets API, and create OAuth 2.0 credentials. The authorization endpoint will be provided in the credentials.\n\nTo obtain the OAuth scopes needed to request access to Google Sheets, you need to specify the appropriate scopes when creating the OAuth 2.0 credentials in the Google Cloud Console. The required scopes depend on the specific actions you want to perform with the Sheets API.\n\nTo obtain the Access Token and OAuth Refresh Token, you need to authenticate the user and obtain their consent to access their Google Sheets data. This can be done using the Google Sheets API client libraries or by implementing the OAuth 2.0 flow manually.\n\nTo obtain the Sheet ID, you need to open the Google Sheet you want to access and copy the ID from the URL in the address bar. The Sheet ID is the long string of characters between \"/d/\" and \"/edit\" in the URL.\n\n## Settings\n\n\n### Sheet ID\n\nThe unique identifier for the Google Sheet we want to connect to.\n\n### Stream Name (Optional)\n\nAn optional name for the stream we want to create.\n\n### Child Sheet Name (Optional)\n\nAn optional name for the child sheet we want to create.\n\n### Key Properties (Optional)\n\nOptional key properties for the child sheet."
+}
